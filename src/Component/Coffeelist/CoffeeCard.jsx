@@ -11,7 +11,7 @@ const CoffeeCard = ({ allcoff, onDelete }) => {
 
   const handledelt = (_id) => {
     console.log("item deleted", _id);
-    fetch(`http://localhost:5000/coffee/${_id}`, {
+    fetch(`https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/coffee/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

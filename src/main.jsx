@@ -24,14 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/coffelist",
         element: <Coffeelist></Coffeelist>,
-        loader: () => fetch("http://localhost:5000/coffee"),
+        loader: () => fetch("https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/coffee"),
         errorElement: <div>404 page Not Found</div>,
       },
       {
         path: "update/:id",
         element: <UpdateInf></UpdateInf>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffee/${params.id}`),
+          fetch(`https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/coffee/${params.id}`),
       },
       {
         path: "signin",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <User></User>,
-        loader: ()=> fetch('http://localhost:5000/users')
+        loader: ()=> fetch('https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/users')
       }
     ],
   },
@@ -57,5 +57,5 @@ createRoot(document.getElementById("root")).render(
   </StrictMode>
 );
 
-// loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`),
+// loader: ({params}) => fetch(`https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/coffee/${params.id}`),
 //         errorElement:<div>404 page Not Found</div>,

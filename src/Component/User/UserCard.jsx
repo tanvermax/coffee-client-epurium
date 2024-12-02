@@ -12,7 +12,7 @@ const UserCard = ({ user, setUserdata,userData }) => {
 
 
 
-    fetch(`http://localhost:5000/users/${_id}`, {
+    fetch(`https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/users/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
