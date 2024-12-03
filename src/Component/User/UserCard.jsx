@@ -1,34 +1,36 @@
 import { Result } from "postcss";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
 
-
-const UserCard = ({ user, setUserdata,userData }) => {
-  const { name, _id, email,lastSignInTime } = user;
-
-
+const UserCard = ({ user, setUserdata, userData }) => {
+  const { deletuser } = useContext(AuthContext);
+  const { name, _id, email, lastSignInTime } = user;
 
   const handledelet = (_id) => {
-
     console.log(_id);
 
-
-
-    fetch(`https://coffee-store-serverv1-1jo29owv1-tanvers-projects-3b319ea4.vercel.app/users/${_id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://coffee-store-serverv1.vercel.app/users/${_id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        const remaning = userData.filter((user) => user._id !== _id);
+        setUserdata(remaning);
+        deletuser();
       });
-    const remaning = userData.filter((user) => user._id !== _id);
-    setUserdata(remaning);
-
-
-    
-  
   };
   return (
     <div className="cofcard">
-      <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
+      <div
+        className="max-w-2xl mx-4 sm:max-w-sm     const deletuser= (email)=>{
+        setLoading(true);
+        return deleteUser(currentuser)
+    }md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900"
+      >
         <div className="rounded-t-lg h-32 overflow-hidden">
           <img
             className="object-cover object-top w-full"
@@ -47,7 +49,9 @@ const UserCard = ({ user, setUserdata,userData }) => {
           <h2 className="font-semibold">{name}</h2>
           <p className="text-gray-500 text-base">ID: {_id}</p>
           <p className="text-gray-500 text-base">Email: {email}</p>
-          <p className="text-gray-500 text-base">last Sign in time: {lastSignInTime}</p>
+          <p className="text-gray-500 text-base">
+            last Sign in time: {lastSignInTime}
+          </p>
         </div>
         <ul className="py-4 mt-2 text-gray-700 flex items-center justify-around">
           <li className="flex flex-row gap-5 btn items-center justify-around">

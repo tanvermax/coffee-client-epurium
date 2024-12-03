@@ -20,16 +20,16 @@ const AuthProvider = ({children}) => {
        return signInWithEmailAndPassword(auth,email ,password)
     }
 
-    // const deletuser= (email)=>{
-    //     setLoading(true);
-    //     return deleteUser(currentuser)
-    // }
+    const deletuser= (email)=>{
+        setLoading(true);
+        return deleteUser(auth.currentUser)
+    }
 
 
 
     // auth context
     const userInfo ={
-        user,loading,createnewUser,loginuser
+        user,loading,createnewUser,loginuser,deletuser
     }
 
    
